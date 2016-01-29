@@ -121,7 +121,6 @@ class IvoryGoogleMapExtension extends Extension
             'layers.xml',
             'map.xml',
             'overlays.xml',
-            'twig.xml',
         );
 
         if ($config['geocoder']['enabled']) {

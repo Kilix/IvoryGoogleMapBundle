@@ -1112,28 +1112,6 @@ abstract class AbstractIvoryGoogleMapExtensionTest extends \PHPUnit_Framework_Te
 
 
 
-    public function testTwigResources()
-    {
-        $this->loadConfiguration($this->container, 'empty');
-        $this->container->compile();
-
-        $this->assertTrue(
-            in_array(
-                'IvoryGoogleMapBundle:Form:places_autocomplete_widget.html.twig',
-                $this->container->getParameter('twig.form.resources')
-            )
-        );
-    }
-
-    public function testPhpResources()
-    {
-        $this->loadConfiguration($this->container, 'empty');
-        $this->container->compile();
-
-        $this->assertTrue(
-            in_array('IvoryGoogleMapBundle:Form', $this->container->getParameter('templating.helper.form.resources'))
-        );
-    }
 
     public function testBusinessAccountWithoutConfiguration()
     {
@@ -1891,21 +1869,5 @@ abstract class AbstractIvoryGoogleMapExtensionTest extends \PHPUnit_Framework_Te
         );
     }
 
-    public function testCustomExtensionHelpers()
-    {
-        $this->loadConfiguration($this->container, 'extension_helpers');
-        $this->container->compile();
 
-        $extensionHelpers = $this->container->get('ivory_google_map.helper.map')->getExtensionHelpers();
-
-        $this->assertCount(2, $extensionHelpers);
-
-        $this->assertArrayHasKey('core', $extensionHelpers);
-        $this->assertArrayHasKey('info_box', $extensionHelpers);
-
-        $this->assertInstanceOf(
-            'Ivory\GoogleMap\Helper\Extension\InfoBoxExtensionHelper',
-            $extensionHelpers['info_box']
-        );
-    }
 }
