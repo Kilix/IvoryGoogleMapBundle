@@ -1110,20 +1110,7 @@ abstract class AbstractIvoryGoogleMapExtensionTest extends \PHPUnit_Framework_Te
         );
     }
 
-    public function testPlacesAutocompleteFormType()
-    {
-        $this->loadConfiguration($this->container, 'empty');
-        $this->container->compile();
 
-        $this->container->enterScope('request');
-
-        $this->assertInstanceOf(
-            'Ivory\GoogleMapBundle\Form\Type\PlacesAutocompleteType',
-            $this->container->get('ivory_google_map.places_autocomplete.form.type')
-        );
-
-        $this->container->leaveScope('request');
-    }
 
     public function testTwigResources()
     {

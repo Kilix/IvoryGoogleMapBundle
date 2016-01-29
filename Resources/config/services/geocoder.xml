@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
->
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+        >
     <parameters>
         <parameter key="ivory_google_map.geocoder.class">Ivory\GoogleMap\Services\Geocoding\Geocoder</parameter>
         <parameter key="ivory_google_map.geocoder.provider.class">Ivory\GoogleMap\Services\Geocoding\GeocoderProvider</parameter>
@@ -18,31 +18,31 @@
         </service>
 
         <service
-            id="ivory_google_map.geocoder.provider"
-            class="%ivory_google_map.geocoder.provider.class%"
-            public="false"
-        >
+                id="ivory_google_map.geocoder.provider"
+                class="%ivory_google_map.geocoder.provider.class%"
+                public="false"
+                >
             <argument type="service" id="ivory_google_map.geocoder.adapter" />
         </service>
 
         <service
-            id="ivory_google_map.geocoder.adapter"
-            class="%ivory_google_map.geocoder.adapter.class%"
-            public="false"
-        />
+                id="ivory_google_map.geocoder.adapter"
+                class="%ivory_google_map.geocoder.adapter.class%"
+                public="false"
+                />
 
         <service
-            id="ivory_google_map.geocoder_request"
-            class="%ivory_google_map.geocoder_request.class%"
-            factory-service="ivory_google_map.geocoder_request.builder"
-            factory-method="build"
-            scope="prototype"
-        />
+                id="ivory_google_map.geocoder_request"
+                class="%ivory_google_map.geocoder_request.class%"
+                shared="false"
+                >
+            <factory service="ivory_google_map.geocoder_request.builder" method="build" />
+        </service>
 
         <service
-            id="ivory_google_map.geocoder_request.builder"
-            class="%ivory_google_map.geocoder_request.builder.class%"
-        >
+                id="ivory_google_map.geocoder_request.builder"
+                class="%ivory_google_map.geocoder_request.builder.class%"
+                >
             <argument>%ivory_google_map.geocoder_request.class%</argument>
         </service>
     </services>

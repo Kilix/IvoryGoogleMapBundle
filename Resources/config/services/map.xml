@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <container xmlns="http://symfony.com/schema/dic/services"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
->
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+        >
     <parameters>
         <parameter key="ivory_google_map.map.class">Ivory\GoogleMap\Map</parameter>
         <parameter key="ivory_google_map.map.builder.class">Ivory\GoogleMapBundle\Model\MapBuilder</parameter>
@@ -15,12 +15,12 @@
     <services>
         <!-- Map services -->
         <service
-            id="ivory_google_map.map"
-            class="%ivory_google_map.map.class%"
-            factory-service="ivory_google_map.map.builder"
-            factory-method="build"
-            scope="prototype"
-        />
+                id="ivory_google_map.map"
+                class="%ivory_google_map.map.class%"
+                shared="false"
+                >
+            <factory service="ivory_google_map.map.builder" method="build" />
+        </service>
 
         <service id="ivory_google_map.map.builder" class="%ivory_google_map.map.builder.class%">
             <argument>%ivory_google_map.map.class%</argument>
@@ -60,9 +60,9 @@
 
         <!-- Map type ID service -->
         <service
-            id="ivory_google_map.helper.map_type_id"
-            class="%ivory_google_map.map_type_id.helper.class%"
-            public="false"
-        />
+                id="ivory_google_map.helper.map_type_id"
+                class="%ivory_google_map.map_type_id.helper.class%"
+                public="false"
+                />
     </services>
 </container>

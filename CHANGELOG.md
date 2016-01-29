@@ -23,16 +23,10 @@
  * 1c161c6 - Make widop/http-adapter-bundle really optional
  * df9d815 - [Service] Add business account support
  * 0512906 - [Service] Replace kriswallsmith/buzz by widop/http-adapter
-
-### 2.0.2 - 2.1.2 (2013-10-09)
-
- * 01d5583 - Add info box support
- * a871d55 - [PlacesAutocompleteType] Fix missing name html attribute + use text as parent type
-
+ 
 ### 2.0.1 - 2.1.1 (2013-08-22)
 
  * 034e312 - [Overlays] Add marker cluster support
- * fe226ae - Add Places autocomplete support
  * a619815 - Fix PHP template service by making it public
 
 ### 2.0.0 (2013-06-07)

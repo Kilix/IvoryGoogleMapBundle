@@ -89,10 +89,7 @@ class IvoryGoogleMapExtension extends Extension
 
         // Extensions sections
         $this->loadExtensions($config, $container);
-
-        // Places sections
-        $this->loadPlacesAutocomplete($config, $container);
-
+        
         // Services sections
         $this->loadBusinessAccount($config, $container);
         $this->loadGeocoder($config, $container);
@@ -124,7 +121,6 @@ class IvoryGoogleMapExtension extends Extension
             'layers.xml',
             'map.xml',
             'overlays.xml',
-            'places_autocomplete.xml',
             'twig.xml',
         );
 
@@ -1424,38 +1420,7 @@ class IvoryGoogleMapExtension extends Extension
         }
     }
 
-    /**
-     * Loads places autocomplete configuration.
-     *
-     * @param array                                                   $config    The processed configuration.
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container The container builder.
-     */
-    protected function loadPlacesAutocomplete(array $config, ContainerBuilder $container)
-    {
-        $templatingEngines = $container->getParameter('templating.engines');
 
-        if (in_array('php', $templatingEngines)) {
-            $phpFormResources = $container->hasParameter('templating.helper.form.resources')
-                ? $container->getParameter('templating.helper.form.resources')
-                : array();
-
-            $container->setParameter(
-                'templating.helper.form.resources',
-                array_merge($phpFormResources, array('IvoryGoogleMapBundle:Form'))
-            );
-        }
-
-        if (in_array('twig', $templatingEngines)) {
-            $twigFormResources = $container->hasParameter('twig.form.resources')
-                ? $container->getParameter('twig.form.resources')
-                : array();
-
-            $container->setParameter(
-                'twig.form.resources',
-                array_merge($twigFormResources, array('IvoryGoogleMapBundle:Form:places_autocomplete_widget.html.twig'))
-            );
-        }
-    }
 
     /**
      * Loads business account configuration.
